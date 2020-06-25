@@ -1,7 +1,7 @@
 {
     "name": "rbmboogie/phiatos-onix-parser",
     "type": "library",
-    "description": "Parser for Onix >=2.0",
+    "description": "Parser for Onix >=2.0 with extensions for Phiatos format.",
     "keywords": ["onix","parser"],
     "homepage": "https://github.com/bibliomundi/Bibliomundi-Onix-Parser",
     "license": "MIT",
