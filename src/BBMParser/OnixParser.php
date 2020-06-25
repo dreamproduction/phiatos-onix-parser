@@ -18,7 +18,7 @@ use BBMParser\Model\Product as Product;
 
 class OnixParser
 {
-	private $onix;
+	protected $onix;
 
 	public function getOnix()
 	{
@@ -100,7 +100,7 @@ class OnixParser
 		}
 	}
 
-	private function getHeader($xmlHeader)
+	protected function getHeader($xmlHeader)
 	{
 		$header = new Header();
 
@@ -124,7 +124,7 @@ class OnixParser
 		return $header;
 	}
 
-	private function getProductAvailability($xmlProduct)
+	protected function getProductAvailability($xmlProduct)
 	{
 		//Existem algumas situações que podem fazer com que o livro não esteja disponível para venda.
 		//Neste caso aqui estamos verificando se o produto está ativo e seu status junto ao fornecedor
@@ -145,7 +145,7 @@ class OnixParser
 		return $availability;
 	}
 
-	private function getProductOperationType($xmlProduct)
+	protected function getProductOperationType($xmlProduct)
 	{
 		//Para saber se é inserção(03), deleção(05) ou alteração(04).
 
@@ -162,7 +162,7 @@ class OnixParser
 		return $operationType;
 	}
 
-	private function getProductId($xmlProduct)
+	protected function getProductId($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -181,7 +181,7 @@ class OnixParser
 		return $id;
 	}
 
-	private function getProductISBN($xmlProduct)
+	protected function getProductISBN($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -199,7 +199,7 @@ class OnixParser
 		return $isbn;
 	}
 
-	private function getProductImprintName($xmlProduct)
+	protected function getProductImprintName($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -217,7 +217,7 @@ class OnixParser
 	}
 
 
-	private function getProductFormatType($xmlProduct)
+	protected function getProductFormatType($xmlProduct)
 	{
 		//epub, pdf etc
 
@@ -236,7 +236,7 @@ class OnixParser
 		return $formatType;
 	}
 
-	private function getProductProtectionType($xmlProduct)
+	protected function getProductProtectionType($xmlProduct)
 	{
 		//adobe, marca d'agua etc
 
@@ -255,7 +255,7 @@ class OnixParser
 		return $protectionType;
 	}
 
-	private function getProductCollectionTitle($xmlProduct)
+	protected function getProductCollectionTitle($xmlProduct)
 	{
 		$collectionTitle = '';
 
@@ -276,7 +276,7 @@ class OnixParser
 		return $collectionTitle;
 	}
 
-	private function getProductTitle($xmlProduct)
+	protected function getProductTitle($xmlProduct)
 	{
 		$title = new Title();
 
@@ -309,7 +309,7 @@ class OnixParser
 		return $title;
 	}
 
-	private function getProductSubTitle($xmlProduct)
+	protected function getProductSubTitle($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -326,7 +326,7 @@ class OnixParser
 		return $subtitle;
 	}
 
-	private function getProductContributors($xmlProduct)
+	protected function getProductContributors($xmlProduct)
 	{
 		$contributors = array();
 
@@ -402,7 +402,7 @@ class OnixParser
 		return $contributors;
 	}
 
-	private function getProductEditionNumber($xmlProduct)
+	protected function getProductEditionNumber($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -419,7 +419,7 @@ class OnixParser
 		return $editionNumber;
 	}
 
-	private function getProductIdiom($xmlProduct)
+	protected function getProductIdiom($xmlProduct)
 	{
 		//Idioma do texto do produto. Por hora somente isso nos importa
 
@@ -440,7 +440,7 @@ class OnixParser
 		return $idiom;
 	}
 
-	private function getProductpageNumbers($xmlProduct)
+	protected function getProductpageNumbers($xmlProduct)
 	{
 		$pageNumbers = '';
 
@@ -466,7 +466,7 @@ class OnixParser
 		return $pageNumbers;
 	}
 
-	private function getProductSize($xmlProduct)
+	protected function getProductSize($xmlProduct)
 	{
 		$size = '';
 		switch ($this->onix->getVersion())
@@ -492,7 +492,7 @@ class OnixParser
 		return $size;
 	}
 
-	private function getProductSizeUnit($xmlProduct)
+	protected function getProductSizeUnit($xmlProduct)
 	{
 		$sizeUnit = '';
 
@@ -519,7 +519,7 @@ class OnixParser
 		return $sizeUnit;
 	}
 
-	private function getProductCategories($xmlProduct)
+	protected function getProductCategories($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -653,7 +653,7 @@ class OnixParser
 		return $categories;
 	}
 
-	private function getProductTags($xmlProduct)
+	protected function getProductTags($xmlProduct)
 	{
 		switch ($this->onix->getVersion())
 		{
@@ -689,7 +689,7 @@ class OnixParser
 		return $tags;
 	}
 
-	private function getProductAgeRatingPrecision($xmlProduct)
+	protected function getProductAgeRatingPrecision($xmlProduct)
 	{
 		$ageRatingPrecision = '';
 
@@ -708,7 +708,7 @@ class OnixParser
 		return $ageRatingPrecision;
 	}
 
-	private function getProductAgeRatingValue($xmlProduct)
+	protected function getProductAgeRatingValue($xmlProduct)
 	{
 		$ageRationValue = '';
 
@@ -727,7 +727,7 @@ class OnixParser
 		return $ageRatingValue;
 	}
 
-	private function getProductSynopsis($xmlProduct)
+	protected function getProductSynopsis($xmlProduct)
 	{
 		$synopsis = '';
 
@@ -757,7 +757,7 @@ class OnixParser
 		return $synopsis;
 	}
 
-	private function getProductFormatFile($xmlProduct)
+	protected function getProductFormatFile($xmlProduct)
 	{
 		$formatFile = '';
 
@@ -784,7 +784,7 @@ class OnixParser
 		return $formatFile;
 	}
 
-	private function getProductUrlFile($xmlProduct)
+	protected function getProductUrlFile($xmlProduct)
 	{
 		$urlFile = '';
 
@@ -810,7 +810,7 @@ class OnixParser
 		return $urlFile;
 	}
 
-	private function getProductPrices($xmlProduct)
+	protected function getProductPrices($xmlProduct)
 	{
 		$prices = array();
 
@@ -877,7 +877,7 @@ class OnixParser
 		return $prices;
 	}
 
-	private function getProductIncludedTerritoriality($xmlProduct)
+	protected function getProductIncludedTerritoriality($xmlProduct)
 	{
 		$includedTerritoriality = '';
 
