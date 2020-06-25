@@ -29,6 +29,7 @@ class Product
     private $prices = array();
     private $includedTerritoriality;
     private $imprintName;
+    private $mediaUrl;
 
     /**
      * @param [type]
@@ -606,5 +607,21 @@ class Product
     public function setImprintName($imprintName)
     {
         $this->imprintName = $imprintName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMediaUrl()
+    {
+      return $this->mediaUrl;
+    }
+
+    /**
+     * @param mixed $mediaUrl
+     */
+    public function setMediaUrl($mediaUrl)
+    {
+      $this->mediaUrl = $mediaUrl;
     }
 }

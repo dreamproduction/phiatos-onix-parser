@@ -96,6 +96,8 @@ class OnixParser
 
 			$product->setPrices($this->getProductPrices($xmlProduct));
 
+			$product->setMediaUrl($this->getProductMediaUrl($xmlProduct));
+
 			$this->onix->setProduct($product);
 		}
 	}
@@ -901,4 +903,17 @@ class OnixParser
 
 		return $includedTerritoriality;
 	}
+
+  protected function getProductMediaUrl(\SimpleXMLElement $xmlProduct)
+  {
+    $mediaFileUrl = '';
+
+    if (count($xmlProduct->MediaFile) > 1) {
+      foreach ($xmlProduct->MediaFile as $xmlMedia) {
+        $mediaFileUrl = strval($xmlMedia->MediaFileLink);
+        break;
+      }
+    }
+    return $mediaFileUrl;
+  }
 }
