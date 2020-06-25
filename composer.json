@@ -1,5 +1,5 @@
 {
-    "name": "magrao/bibliomundi-onix-parser",
+    "name": "rbmboogie/phiatos-onix-parser",
     "type": "library",
     "description": "Parser for Onix >=2.0",
     "keywords": ["onix","parser"],
@@ -11,6 +11,10 @@
             "email": "carlos.magno@bibliomundi.com",
             "homepage": "",
             "role": "Developer"
+        },
+        {
+            "name": "Bogdan Racz",
+            "email": "racz.bogdan@gmail.com"
         }
     ],
     "require": {
