@@ -98,6 +98,8 @@ class OnixParser
 
 			$product->setMediaUrl($this->getProductMediaUrl($xmlProduct));
 
+			$product->setWebshopCategory($this->getWebshopCategory($xmlProduct));
+
 			$this->onix->setProduct($product);
 		}
 	}
@@ -904,16 +906,21 @@ class OnixParser
 		return $includedTerritoriality;
 	}
 
-  protected function getProductMediaUrl(\SimpleXMLElement $xmlProduct)
-  {
-    $mediaFileUrl = '';
+    protected function getProductMediaUrl(\SimpleXMLElement $xmlProduct)
+    {
+        $mediaFileUrl = '';
 
-    if (count($xmlProduct->MediaFile) > 1) {
-      foreach ($xmlProduct->MediaFile as $xmlMedia) {
-        $mediaFileUrl = strval($xmlMedia->MediaFileLink);
-        break;
-      }
+        if (count($xmlProduct->MediaFile) > 1) {
+            foreach ($xmlProduct->MediaFile as $xmlMedia) {
+                $mediaFileUrl = strval($xmlMedia->MediaFileLink);
+                break;
+            }
+        }
+        return $mediaFileUrl;
     }
-    return $mediaFileUrl;
-  }
+
+    protected function getWebshopCategory(\SimpleXMLElement $xmlProduct)
+    {
+        return strval($xmlProduct->WebshopCategory);
+    }
 }
