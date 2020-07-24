@@ -30,6 +30,7 @@ class Product
     private $includedTerritoriality;
     private $imprintName;
     private $mediaUrl;
+    private $webshopCategory;
 
     /**
      * @param [type]
@@ -614,7 +615,7 @@ class Product
      */
     public function getMediaUrl()
     {
-      return $this->mediaUrl;
+        return $this->mediaUrl;
     }
 
     /**
@@ -622,6 +623,22 @@ class Product
      */
     public function setMediaUrl($mediaUrl)
     {
-      $this->mediaUrl = $mediaUrl;
+        $this->mediaUrl = $mediaUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWebshopCategory()
+    {
+        return $this->webshopCategory;
+    }
+
+    /**
+     * @param mixed $webshopCategory
+     */
+    public function setWebshopCategory($webshopCategory): void
+    {
+        $this->webshopCategory = $webshopCategory;
     }
 }
