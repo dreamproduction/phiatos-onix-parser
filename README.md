@@ -1,11 +1,11 @@
-# Bibliomundi-Onix-Parser
+# Phiatos-Onix-Parser
 
 PHP Library to convert XML Onix into PHP Objects.
 
 # Requirements
 
 - XML Onix 2.0 >
-- PHP 5.4 >
+- PHP 7.1 >
 
 # Install
 
