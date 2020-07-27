@@ -29,8 +29,8 @@ class Product
     private $prices = array();
     private $includedTerritoriality;
     private $imprintName;
-    private $mediaUrl;
-    private $webshopCategory;
+    private $mediaUrls;
+    private $webshopCategories;
 
     /**
      * @param [type]
@@ -613,32 +613,32 @@ class Product
     /**
      * @return mixed
      */
-    public function getMediaUrl()
+    public function getMediaUrls()
     {
-        return $this->mediaUrl;
+        return $this->mediaUrls;
     }
 
     /**
      * @param mixed $mediaUrl
      */
-    public function setMediaUrl($mediaUrl)
+    public function setMediaUrls($mediaUrls)
     {
-        $this->mediaUrl = $mediaUrl;
+        $this->mediaUrls = $mediaUrls;
     }
 
     /**
      * @return mixed
      */
-    public function getWebshopCategory()
+    public function getWebshopCategories()
     {
-        return $this->webshopCategory;
+        return $this->webshopCategories;
     }
 
     /**
-     * @param mixed $webshopCategory
+     * @param mixed $webshopCategories
      */
-    public function setWebshopCategory($webshopCategory): void
+    public function setWebshopCategories($webshopCategories): void
     {
-        $this->webshopCategory = $webshopCategory;
+        $this->webshopCategories = $webshopCategories;
     }
 }
