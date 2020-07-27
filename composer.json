@@ -9,7 +9,6 @@
         {
             "name": "Carlos Magno",
             "email": "carlos.magno@bibliomundi.com",
-            "homepage": "",
             "role": "Developer"
         },
         {
@@ -18,12 +17,12 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.1"
     },
     "autoload": {
         "psr-0": {
             "BBMParser": "src/"
         }
     },
-    "version": "1.0.3"
+    "version": "1.0.4"
 }

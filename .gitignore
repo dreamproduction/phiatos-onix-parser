@@ -1,2 +1,5 @@
 test.php
 onix.xml
+.idea
+composer.lock
+vendor/

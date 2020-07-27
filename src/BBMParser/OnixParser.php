@@ -100,6 +100,8 @@ class OnixParser
 
 			$product->setWebshopCategories($this->getWebshopCategories($xmlProduct));
 
+			$product->setSupplierName($this->getSupplierName($xmlProduct));
+
 			$this->onix->setProduct($product);
 		}
 	}
@@ -935,4 +937,9 @@ class OnixParser
 
         return $categories;
     }
+
+	protected function getSupplierName(\SimpleXMLElement $xmlProduct)
+	{
+		return strval($xmlProduct->SupplyDetail->SupplierName);
+	}
 }

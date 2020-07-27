@@ -31,6 +31,7 @@ class Product
     private $imprintName;
     private $mediaUrls;
     private $webshopCategories;
+	private $supplierName;
 
     /**
      * @param [type]
@@ -640,5 +641,21 @@ class Product
     public function setWebshopCategories($webshopCategories): void
     {
         $this->webshopCategories = $webshopCategories;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSupplierName()
+    {
+        return $this->supplierName;
+    }
+
+    /**
+     * @param mixed $supplierName
+     */
+    public function setSupplierName($supplierName): void
+    {
+        $this->supplierName = $supplierName;
     }
 }
