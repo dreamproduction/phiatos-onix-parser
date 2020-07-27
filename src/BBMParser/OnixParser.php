@@ -96,9 +96,9 @@ class OnixParser
 
 			$product->setPrices($this->getProductPrices($xmlProduct));
 
-			$product->setMediaUrl($this->getProductMediaUrl($xmlProduct));
+			$product->setMediaUrls($this->getProductMediaUrls($xmlProduct));
 
-			$product->setWebshopCategory($this->getWebshopCategory($xmlProduct));
+			$product->setWebshopCategories($this->getWebshopCategories($xmlProduct));
 
 			$this->onix->setProduct($product);
 		}
@@ -906,21 +906,33 @@ class OnixParser
 		return $includedTerritoriality;
 	}
 
-    protected function getProductMediaUrl(\SimpleXMLElement $xmlProduct)
+    protected function getProductMediaUrls(\SimpleXMLElement $xmlProduct)
     {
-        $mediaFileUrl = '';
+        $mediaFileUrls = [];
 
-        if (count($xmlProduct->MediaFile) > 1) {
+        if (count($xmlProduct->MediaFile)) {
             foreach ($xmlProduct->MediaFile as $xmlMedia) {
+                // Skip the "_klein.jpg" files.
                 $mediaFileUrl = strval($xmlMedia->MediaFileLink);
-                break;
+                if (strpos($mediaFileUrl, '_klein.jpg')) {
+                    continue;
+                }
+                $mediaFileUrls[] = strval($xmlMedia->MediaFileLink);
             }
         }
-        return $mediaFileUrl;
+        return $mediaFileUrls;
     }
 
-    protected function getWebshopCategory(\SimpleXMLElement $xmlProduct)
+    protected function getWebshopCategories(\SimpleXMLElement $xmlProduct)
     {
-        return strval($xmlProduct->WebshopCategory);
+        $categories = [];
+
+        if (count($xmlProduct->WebshopCategory)) {
+            foreach ($xmlProduct->WebshopCategory as $xmlCategory) {
+                $categories[] = strval($xmlCategory);
+            }
+        }
+
+        return $categories;
     }
 }
