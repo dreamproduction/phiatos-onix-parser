@@ -13,7 +13,7 @@ abstract class Contributor
 	private $biography;
     private $website;
 	private $territoriality;
-
+	private $personNameInverted;
 
     /**
      * Gets the value of id.
@@ -222,6 +222,22 @@ abstract class Contributor
     public function setTerritoriality($territoriality)
     {
         $this->territoriality = $territoriality;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPersonNameInverted()
+    {
+        return $this->personNameInverted;
+    }
+
+    /**
+     * @param mixed $personNameInverted
+     */
+    public function setPersonNameInverted($personNameInverted): void
+    {
+        $this->personNameInverted = $personNameInverted;
     }
 
 }

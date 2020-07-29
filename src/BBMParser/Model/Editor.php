@@ -2,9 +2,9 @@
 
 namespace BBMParser\Model;
 
-class Author extends Contributor
+class Editor extends Contributor
 {
-    public const ROLE_ID = 'A01';
+    public const ROLE_ID = 'B05';
 
     public function __construct()
     {

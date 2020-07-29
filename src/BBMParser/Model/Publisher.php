@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 namespace BBMParser\Model;
 
-class Author extends Contributor
+class Publisher extends Contributor
 {
-    public const ROLE_ID = 'A01';
+    public const ROLE_ID = 'B01';
 
     public function __construct()
     {

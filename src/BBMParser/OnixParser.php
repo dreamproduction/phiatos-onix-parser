@@ -2,7 +2,9 @@
 
 namespace BBMParser;
 
+use BBMParser\Model\Editor;
 use BBMParser\Model\Price as Price;
+use BBMParser\Model\Publisher;
 use BBMParser\Model\Title as Title;
 use BBMParser\Model\Author as Author;
 use BBMParser\Model\Ilustrator as Ilustrator;
@@ -338,8 +340,7 @@ class OnixParser
 
 		//Podemos ter vários autores e ilustradores para o mesmo ebook. Lembrando que neste caso trabalharemos apenas com esses dois 		
 
-		switch ($this->onix->getVersion())
-		{
+		switch ($this->onix->getVersion()) {
 			case '3.0':
 			// case '3.0.5':
 				foreach ($xmlProduct->DescriptiveDetail->Contributor as $xmlContributor)
@@ -352,7 +353,7 @@ class OnixParser
 							$contributor = new Author();
 							break;
 						case 'A12'://Significa que é ilustrador do livro
-							$contributor = new Ilustrator();
+							$contributor = new Publisher();
 							break;
 					}
 
@@ -374,30 +375,30 @@ class OnixParser
 				break;
 			case '2.0':
 			case '2.1':
-				foreach ($xmlProduct->Contributor as $xmlContributor)
-				{
+				foreach ($xmlProduct->Contributor as $xmlContributor) {
 					$contributor = null;
 
-					switch (strval($xmlContributor->ContributorRole))
-					{
-						case 'A01'://Significa que é autor do livro
+					switch (strval($xmlContributor->ContributorRole)) {
+					    // Author
+						case 'A01':
 							$contributor = new Author();
 							break;
-						case 'A12'://Significa que é ilustrador do livro
-							$contributor = new Ilustrator();
+                        // Editor
+						case 'B05':
+                            $contributor = new Editor();
+						    break;
+                        // Publisher
+                        case 'B01':
+							$contributor = new Publisher();
 							break;
 					}
 
-					if(isset($contributor))
-					{
+					if (isset($contributor)) {
 						$contributor->setId('');
 						$contributor->setPreferenceOrderExibition(strval($xmlContributor->SequenceNumber));
 						$contributor->setName(strval($xmlContributor->NamesBeforeKey));
-						$contributor->setTypeName('');
+						$contributor->setPersonNameInverted(strval($xmlContributor->PersonNameInverted));
 						$contributor->setLastName(strval($xmlContributor->KeyNames));
-						$contributor->setBiography(strval($xmlContributor->BiographicalNote));
-						$contributor->setWebsite('');
-						$contributor->setTerritoriality(strval($xmlContributor->CountryCode));
 
 						$contributors[] = $contributor;
 					}
