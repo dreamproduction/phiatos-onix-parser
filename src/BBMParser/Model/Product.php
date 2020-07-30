@@ -15,6 +15,7 @@ class Product
     private $subTitle;
     private $contributors = array();
     private $editionNumber;
+    private $editionStatement;
     private $idiom;
     private $pageNumbers;
     private $size;
@@ -32,6 +33,8 @@ class Product
     private $mediaUrls;
     private $webshopCategories;
 	private $supplierName;
+	private $measures;
+	private $productUpdateUrl;
 
     /**
      * @param [type]
@@ -285,6 +288,22 @@ class Product
     public function setEditionNumber($editionNumber)
     {
         $this->editionNumber = $editionNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEditionStatement()
+    {
+        return $this->editionStatement;
+    }
+
+    /**
+     * @param mixed $editionStatement
+     */
+    public function setEditionStatement($editionStatement): void
+    {
+        $this->editionStatement = $editionStatement;
     }
 
     /**
@@ -657,5 +676,57 @@ class Product
     public function setSupplierName($supplierName): void
     {
         $this->supplierName = $supplierName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMeasures()
+    {
+        return $this->measures;
+    }
+
+    /**
+     * @param mixed $measures
+     */
+    public function setMeasures($measures): void
+    {
+        $this->measures = $measures;
+    }
+
+    /**
+     * Gets the value of a measure.
+     *
+     * @return mixed
+     */
+    public function getMeasureByType($type)
+    {
+        $measures = array();
+
+        foreach ($this->measures as $measure)
+        {
+            $reflection = new \ReflectionClass($measure);
+
+            if($reflection->getShortName() == ucfirst($type))
+                $measures[] = $measure;
+        }
+
+        return $measures;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductUpdateUrl()
+    {
+        return $this->productUpdateUrl;
+    }
+
+    /**
+     * @param mixed $productUpdateUrl
+     */
+    public function setProductUpdateUrl($productUpdateUrl): void
+    {
+        $this->productUpdateUrl = $productUpdateUrl;
     }
 }

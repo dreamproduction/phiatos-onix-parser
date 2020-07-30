@@ -13,6 +13,9 @@ use BBMParser\Model\CDD as CDD;
 use BBMParser\Model\Header as Header;
 use BBMParser\Model\Onix as Onix;
 use BBMParser\Model\Product as Product;
+use BBMParser\Model\Width as Width;
+use BBMParser\Model\Weight as Weight;
+use BBMParser\Model\Thickness as Thickness;
 
 /**
  * Convert XML Onix(Essential) to object 
@@ -72,6 +75,8 @@ class OnixParser
 
 			$product->setEditionNumber($this->getProductEditionNumber($xmlProduct));
 
+			$product->setEditionStatement($this->getProductEditionStatement($xmlProduct));
+
 			$product->setIdiom($this->getProductIdiom($xmlProduct));
 
 			$product->setPageNumbers($this->getProductPageNumbers($xmlProduct));
@@ -103,6 +108,10 @@ class OnixParser
 			$product->setWebshopCategories($this->getWebshopCategories($xmlProduct));
 
 			$product->setSupplierName($this->getSupplierName($xmlProduct));
+
+			$product->setMeasures($this->getMeasures($xmlProduct));
+
+			$product->setProductUpdateUrl($this->getProductUpdateUrl($xmlProduct));
 
 			$this->onix->setProduct($product);
 		}
@@ -327,7 +336,7 @@ class OnixParser
 				break;
 			case '2.0':
 			case '2.1':
-				$subtitle = '';
+				$subtitle = strval($xmlProduct->Title->Subtitle);
 				break;
 		}
 
@@ -409,8 +418,29 @@ class OnixParser
 		return $contributors;
 	}
 
+	protected function getProductEditionStatement($xmlProduct)
+    {
+        $editionStatement = '';
+
+        switch ($this->onix->getVersion())
+        {
+            case '3.0':
+                // case '3.0.5':
+                $editionStatement = strval($xmlProduct->DescriptiveDetail->EditionStatement);
+                break;
+            case '2.0':
+            case '2.1':
+                $editionStatement = strval($xmlProduct->EditionStatement);
+                break;
+        }
+
+        return $editionStatement;
+    }
+
 	protected function getProductEditionNumber($xmlProduct)
 	{
+	    $editionNumber = '';
+
 		switch ($this->onix->getVersion())
 		{
 			case '3.0':
@@ -472,6 +502,39 @@ class OnixParser
 
 		return $pageNumbers;
 	}
+
+	protected function getMeasures($xmlProduct)
+    {
+        $measures = [];
+
+        foreach ($xmlProduct->Measure as $xmlMeasure)
+        {
+            $measureType = strval($xmlMeasure->MeasureTypeCode);
+            $measure = FALSE;
+            switch ($measureType) {
+                case '02':
+                    $measure = new Width();
+                    break;
+                case '03':
+                    $measure = new Thickness();
+                    break;
+                case '08':
+                    $measure = new Weight();
+                    break;
+            }
+            if (empty($measure)) {
+                continue;
+            }
+
+            $measure->setType($measureType);
+            $measure->setMeasurement(strval($xmlMeasure->Measurement));
+            $measure->setMeasurementUnitCode(strval($xmlMeasure->MeasureUnitCode));
+
+            $measures[] = $measure;
+        }
+
+        return $measures;
+    }
 
 	protected function getProductSize($xmlProduct)
 	{
@@ -943,4 +1006,9 @@ class OnixParser
 	{
 		return strval($xmlProduct->SupplyDetail->SupplierName);
 	}
+
+    protected function getProductUpdateUrl(\SimpleXMLElement $xmlProduct)
+    {
+        return trim(strval($xmlProduct->ProductUpdate));
+    }
 }
