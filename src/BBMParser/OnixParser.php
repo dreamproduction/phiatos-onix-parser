@@ -113,6 +113,8 @@ class OnixParser
 
 			$product->setProductUpdateUrl($this->getProductUpdateUrl($xmlProduct));
 
+			$product->setRelatedProducts($this->getRelatedProducts($xmlProduct));
+
 			$this->onix->setProduct($product);
 		}
 	}
@@ -1010,5 +1012,24 @@ class OnixParser
     protected function getProductUpdateUrl(\SimpleXMLElement $xmlProduct)
     {
         return trim(strval($xmlProduct->ProductUpdate));
+    }
+
+    protected function getRelatedProducts(\SimpleXMLElement $xmlProduct)
+    {
+        $relatedProducts = [];
+
+        if (count($xmlProduct->RelatedProduct)) {
+            foreach ($xmlProduct->RelatedProduct as $xmlRelatedProductIds) {
+                foreach ($xmlRelatedProductIds->ProductIdentifier as $xmlRelatedProductId) {
+                    if (strval($xmlRelatedProductId->ProductIDType) != '01') {
+                        continue;
+                    }
+                    $relatedProducts[] = strval($xmlRelatedProductId->IDValue);
+                }
+
+            }
+        }
+
+        return $relatedProducts;
     }
 }

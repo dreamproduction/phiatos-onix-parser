@@ -35,6 +35,7 @@ class Product
 	private $supplierName;
 	private $measures;
 	private $productUpdateUrl;
+	private $relatedProducts;
 
     /**
      * @param [type]
@@ -729,4 +730,21 @@ class Product
     {
         $this->productUpdateUrl = $productUpdateUrl;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRelatedProducts()
+    {
+        return $this->relatedProducts;
+    }
+
+    /**
+     * @param mixed $relatedProducts
+     */
+    public function setRelatedProducts($relatedProducts): void
+    {
+        $this->relatedProducts = $relatedProducts;
+    }
+
 }
