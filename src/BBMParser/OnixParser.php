@@ -115,6 +115,8 @@ class OnixParser
 
 			$product->setRelatedProducts($this->getRelatedProducts($xmlProduct));
 
+			$product->setLanguages($this->getProductLanguages($xmlProduct));
+
 			$this->onix->setProduct($product);
 		}
 	}
@@ -478,6 +480,30 @@ class OnixParser
 
 		return $idiom;
 	}
+
+    protected function getProductLanguages($xmlProduct)
+    {
+        $languages = [];
+
+        switch ($this->onix->getVersion())
+        {
+            case '3.0':
+                // case '3.0.5':
+                if (strval($xmlProduct->DescriptiveDetail->Language->LanguageRole == '01'))
+                    $languages[] = strval($xmlProduct->DescriptiveDetail->Language->LanguageCode);
+                break;
+            case '2.0':
+            case '2.1':
+                foreach ($xmlProduct->Language as $xmlLanguage) {
+                    if (strval($xmlLanguage->LanguageRole == '01')) {
+                        $languages[] = strval($xmlLanguage->LanguageCode);
+                    }
+                }
+                break;
+        }
+
+        return $languages;
+    }
 
 	protected function getProductpageNumbers($xmlProduct)
 	{

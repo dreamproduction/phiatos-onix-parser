@@ -36,6 +36,7 @@ class Product
 	private $measures;
 	private $productUpdateUrl;
 	private $relatedProducts;
+	private $languages;
 
     /**
      * @param [type]
@@ -745,6 +746,22 @@ class Product
     public function setRelatedProducts($relatedProducts): void
     {
         $this->relatedProducts = $relatedProducts;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages): void
+    {
+        $this->languages = $languages;
     }
 
 }
