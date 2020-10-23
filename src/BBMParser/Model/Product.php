@@ -32,11 +32,12 @@ class Product
     private $imprintName;
     private $mediaUrls;
     private $webshopCategories;
-	private $supplierName;
-	private $measures;
-	private $productUpdateUrl;
-	private $relatedProducts;
-	private $languages;
+    private $supplierName;
+    private $measures;
+    private $productUpdateUrl;
+    private $relatedProducts;
+    private $languages;
+    private $productForm;
 
     /**
      * @param [type]
@@ -238,7 +239,7 @@ class Product
         return $this->contributors;
     }
 
-     /**
+    /**
      * Gets the value of contributor.
      *
      * @return mixed
@@ -247,10 +248,10 @@ class Product
     {
         $contributors = array();
 
-        foreach ($this->contributors as $contributor) 
+        foreach ($this->contributors as $contributor)
         {
             $reflection = new \ReflectionClass($contributor);
-            
+
             if($reflection->getShortName() == ucfirst($type))
                 $contributors[] = $contributor;
         }
@@ -410,10 +411,10 @@ class Product
     {
         $categories = array();
 
-        foreach ($this->categories as $category) 
+        foreach ($this->categories as $category)
         {
             $reflection = new \ReflectionClass($category);
-            
+
             if($reflection->getShortName() == ucfirst($type))
                 $categories[] = $category;
         }
@@ -588,7 +589,7 @@ class Product
         $this->prices = $prices;
     }
 
-     /**
+    /**
      * Gets the value of price.
      *
      * @return mixed
@@ -610,7 +611,7 @@ class Product
         $this->includedTerritoriality = $includedTerritoriality;
     }
 
-     /**
+    /**
      * Gets the value of price.
      *
      * @return mixed
@@ -762,6 +763,22 @@ class Product
     public function setLanguages($languages): void
     {
         $this->languages = $languages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductForm()
+    {
+        return $this->productForm;
+    }
+
+    /**
+     * @param mixed $productForm
+     */
+    public function setProductForm($productForm): void
+    {
+        $this->productForm = $productForm;
     }
 
 }

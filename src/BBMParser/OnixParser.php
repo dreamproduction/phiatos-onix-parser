@@ -99,6 +99,8 @@ class OnixParser
 
             $product->setFormatFile($this->getProductFormatFile($xmlProduct));
 
+            $product->setProductForm($this->getProductForm($xmlProduct));
+
             $product->setUrlFile($this->getProductUrlFile($xmlProduct));
 
             $product->setPrices($this->getProductPrices($xmlProduct));
@@ -237,6 +239,10 @@ class OnixParser
         return $imprintName;
     }
 
+    protected function getProductForm($xmlProduct)
+    {
+        return strval($xmlProduct->ProductForm);
+    }
 
     protected function getProductFormatType($xmlProduct)
     {
