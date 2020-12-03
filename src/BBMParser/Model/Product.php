@@ -36,6 +36,7 @@ class Product
     private $measures;
     private $productUpdateUrl;
     private $relatedProducts;
+    private $languageRelatedProducts;
     private $productContainedItems = array();
     private $languages;
     private $productForm;
@@ -748,6 +749,22 @@ class Product
     public function setRelatedProducts($relatedProducts): void
     {
         $this->relatedProducts = $relatedProducts;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguageRelatedProducts()
+    {
+        return $this->languageRelatedProducts;
+    }
+
+    /**
+     * @param mixed $languageRelatedProducts
+     */
+    public function setLanguageRelatedProducts($languageRelatedProducts): void
+    {
+        $this->languageRelatedProducts = $languageRelatedProducts;
     }
 
     /**
