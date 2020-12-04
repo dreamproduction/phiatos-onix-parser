@@ -35,8 +35,8 @@ class Product
     private $supplierName;
     private $measures;
     private $productUpdateUrl;
-    private $relatedProducts;
-    private $languageRelatedProducts;
+    private $relatedProducts = array();
+    private $languageRelatedProducts = array();
     private $productContainedItems = array();
     private $languages;
     private $productForm;
@@ -752,7 +752,7 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getLanguageRelatedProducts()
     {
