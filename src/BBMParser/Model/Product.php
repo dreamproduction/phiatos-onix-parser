@@ -40,6 +40,7 @@ class Product
     private $productContainedItems = array();
     private $languages;
     private $productForm;
+    private $publishingStatus;
 
     /**
      * @param [type]
@@ -813,6 +814,22 @@ class Product
     public function setProductContainedItems($productContainedItems): void
     {
         $this->productContainedItems = $productContainedItems;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublishingStatus()
+    {
+        return $this->publishingStatus;
+    }
+
+    /**
+     * @param mixed $publishingStatus
+     */
+    public function setPublishingStatus($publishingStatus): void
+    {
+        $this->publishingStatus = $publishingStatus;
     }
 
 }

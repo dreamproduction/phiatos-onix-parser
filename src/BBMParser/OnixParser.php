@@ -151,6 +151,24 @@ class OnixParser
         return $header;
     }
 
+    protected function getPublishingStatus($xmlProduct)
+    {
+        switch ($this->onix->getVersion())
+        {
+            case '3.0':
+                // case '3.0.5':
+                $publishingStatus = strval($xmlProduct->PublishingDetail->PublishingStatus);
+                break;
+
+            case '2.0':
+            case '2.1':
+                $publishingStatus = strval($xmlProduct->PublishingStatus);
+                break;
+        }
+
+        return $publishingStatus;
+    }
+
     protected function getProductAvailability($xmlProduct)
     {
         //Existem algumas situações que podem fazer com que o livro não esteja disponível para venda.
