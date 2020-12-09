@@ -9,7 +9,7 @@ PHP Library to convert XML Onix into PHP Objects.
 
 # Install
 
-composer require rbmboogie/phiatos-onix-parser.
+composer require bogdan-racz/phiatos-onix-parser.
 
 # Usage
 
