@@ -123,6 +123,8 @@ class OnixParser
 
             $product->setLanguages($this->getProductLanguages($xmlProduct));
 
+            $product->setPublishingStatus($this->getPublishingStatus($xmlProduct));
+
             $this->onix->setProduct($product);
         }
     }
