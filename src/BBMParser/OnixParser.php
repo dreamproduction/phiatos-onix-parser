@@ -956,6 +956,7 @@ class OnixParser
                         $price->setStatus(strval($xmlPrice->PriceStatus));
                         $price->setAmount(strval($xmlPrice->PriceAmount));
                         $price->setCurrency(strval($xmlPrice->CurrencyCode));
+                        $price->setTaxRateCode(strval($xmlPrice->TaxRateCode1));
 
                         $prices[] = $price;
                     }
@@ -968,6 +969,7 @@ class OnixParser
                     $price->setStatus(strval($xmlProduct->ProductSupply->SupplyDetail->PriceStatus));
                     $price->setAmount(strval($xmlProduct->ProductSupply->SupplyDetail->PriceAmount));
                     $price->setCurrency(strval($xmlProduct->ProductSupply->SupplyDetail->CurrencyCode));
+                    $price->setTaxRateCode(strval($xmlProduct->ProductSupply->SupplyDetail->TaxRateCode1));
 
                     $prices[] = $price;
                 }
@@ -984,6 +986,7 @@ class OnixParser
                         $price->setStatus('');
                         $price->setAmount(strval($xmlPrice->PriceAmount));
                         $price->setCurrency(strval($xmlPrice->CurrencyCode));
+                        $price->setTaxRateCode(strval($xmlPrice->TaxRateCode1));
 
                         $prices[] = $price;
                     }
@@ -996,6 +999,7 @@ class OnixParser
                     $price->setStatus('');
                     $price->setAmount(strval($xmlProduct->SupplyDetail->Price->PriceAmount));
                     $price->setCurrency(strval($xmlProduct->SupplyDetail->Price->CurrencyCode));
+                    $price->setTaxRateCode(strval($xmlProduct->SupplyDetail->Price->TaxRateCode1));
 
                     $prices[] = $price;
                 }
@@ -1007,6 +1011,7 @@ class OnixParser
                     $price->setStatus('');
                     $price->setAmount(0);
                     $price->setCurrency('CHF');
+                    $price->setTaxRateCode(7.7);
 
                     $prices[] = $price;
                 }

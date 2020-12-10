@@ -8,6 +8,7 @@ class Price
     private $status;
     private $amount;
     private $currency;
+    private $taxRateCode;
 
     public function getType()
     {
@@ -47,5 +48,21 @@ class Price
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTaxRateCode()
+    {
+        return $this->taxRateCode;
+    }
+
+    /**
+     * @param string $taxRateCode
+     */
+    public function setTaxRateCode($taxRateCode): void
+    {
+        $this->taxRateCode = $taxRateCode;
     }
 }
