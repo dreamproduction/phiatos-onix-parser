@@ -1057,6 +1057,11 @@ class OnixParser
                 if (strpos($mediaFileUrl, '_klein.jpg')) {
                     continue;
                 }
+                // Skip all other files besides the 04 type (gross).
+                $mediaType = strval($xmlMedia->MediaFileTypeCode);
+                if ($mediaType != '04') {
+                    continue;
+                }
                 $mediaFileUrls[] = strval($xmlMedia->MediaFileLink);
             }
         }
