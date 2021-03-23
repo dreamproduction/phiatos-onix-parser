@@ -230,6 +230,7 @@ class OnixParser
 
     protected function getProductISBN($xmlProduct)
     {
+        $isbn = '';
         switch ($this->onix->getVersion())
         {
             case '3.0':
