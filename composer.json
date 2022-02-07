@@ -23,6 +23,5 @@
         "psr-0": {
             "BBMParser": "src/"
         }
-    },
-    "version": "1.0.20"
+    }
 }
