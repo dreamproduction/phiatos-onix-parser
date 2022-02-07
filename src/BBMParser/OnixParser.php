@@ -123,6 +123,8 @@ class OnixParser
 
             $product->setLanguages($this->getProductLanguages($xmlProduct));
 
+            $product->setKeywords($this->getProductKeywords($xmlProduct));
+
             $product->setPublishingStatus($this->getPublishingStatus($xmlProduct));
 
             $this->onix->setProduct($product);
@@ -534,6 +536,23 @@ class OnixParser
         }
 
         return $languages;
+    }
+
+    protected function getProductKeywords($xmlProduct)
+    {
+        if (empty($xmlProduct->searchwords)) {
+            return [];
+        }
+
+        $keywords = [];
+        foreach ($xmlProduct->searchwords->searchword as $searchWord) {
+            $keyword = strval($searchWord);
+            if (strlen($keyword) > 3) {
+                $keywords[] = $keyword;
+            }
+        }
+
+        return $keywords;
     }
 
     protected function getProductpageNumbers($xmlProduct)

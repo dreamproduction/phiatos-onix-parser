@@ -38,6 +38,7 @@ class Product
     private $relatedProducts = array();
     private $languageRelatedProducts = array();
     private $productContainedItems = array();
+    private $keywords = array();
     private $languages;
     private $productForm;
     private $publishingStatus;
@@ -814,6 +815,22 @@ class Product
     public function setProductContainedItems($productContainedItems): void
     {
         $this->productContainedItems = $productContainedItems;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
+    }
+
+    /**
+     * @param mixed $keywords
+     */
+    public function setKeywords($keywords): void
+    {
+        $this->keywords = $keywords;
     }
 
     /**
