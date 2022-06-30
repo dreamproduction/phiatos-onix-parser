@@ -2,6 +2,7 @@
 
 namespace BBMParser;
 
+use BBMParser\Model\Collaborator;
 use BBMParser\Model\Editor;
 use BBMParser\Model\Price as Price;
 use BBMParser\Model\Publisher;
@@ -436,6 +437,10 @@ class OnixParser
                         // Publisher
                         case 'B01':
                             $contributor = new Publisher();
+                            break;
+                        // Collaborator
+                        case 'Z99':
+                            $contributor = new Collaborator();
                             break;
                     }
 
