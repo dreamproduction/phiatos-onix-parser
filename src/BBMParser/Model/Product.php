@@ -42,6 +42,7 @@ class Product
     private $languages;
     private $productForm;
     private $publishingStatus;
+    private $textLink;
 
     /**
      * @param [type]
@@ -847,6 +848,22 @@ class Product
     public function setPublishingStatus($publishingStatus): void
     {
         $this->publishingStatus = $publishingStatus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTextLink()
+    {
+        return $this->textLink;
+    }
+
+    /**
+     * @param mixed $textLink
+     */
+    public function setTextLink($textLink): void
+    {
+        $this->textLink = $textLink;
     }
 
 }

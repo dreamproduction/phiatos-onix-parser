@@ -128,6 +128,8 @@ class OnixParser
 
             $product->setPublishingStatus($this->getPublishingStatus($xmlProduct));
 
+            $product->setTextLink($this->getTextLink($xmlProduct));
+
             $this->onix->setProduct($product);
         }
     }
@@ -172,6 +174,24 @@ class OnixParser
         }
 
         return $publishingStatus;
+    }
+
+    protected function getTextLink($xmlProduct)
+    {
+        $textLink = '';
+        switch ($this->onix->getVersion())
+        {
+            case '2.0':
+            case '2.1':
+                foreach($xmlProduct->OtherText as $otherText)
+                {
+                    if(strval($otherText->TextTypeCode) == '23')
+                        $textLink = strval($otherText->TextLink);
+                }
+                break;
+        }
+
+        return $textLink;
     }
 
     protected function getProductAvailability($xmlProduct)
