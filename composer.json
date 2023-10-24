@@ -2,8 +2,8 @@
     "name": "dreamproduction/phiatos-onix-parser",
     "type": "library",
     "description": "Parser for Onix >=2.0 with extensions for Phiatos format.",
-    "keywords": ["onix","parser"],
-    "homepage": "https://github.com/bibliomundi/Bibliomundi-Onix-Parser",
+    "keywords": ["onix", "parser", "phiatos"],
+    "homepage": "https://github.com/dreamproduction/phiatos-onix-parser",
     "license": "MIT",
     "authors": [
         {
@@ -13,11 +13,11 @@
         },
         {
             "name": "Bogdan Racz",
-            "email": "racz.bogdan@gmail.com"
+            "email": "bogdan.racz@dreamproduction.com"
         }
     ],
     "require": {
-        "php": ">=7.1"
+        "php": ">=8.0"
     },
     "autoload": {
         "psr-0": {

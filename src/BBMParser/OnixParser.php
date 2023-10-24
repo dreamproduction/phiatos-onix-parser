@@ -8,7 +8,6 @@ use BBMParser\Model\Price as Price;
 use BBMParser\Model\Publisher;
 use BBMParser\Model\Title as Title;
 use BBMParser\Model\Author as Author;
-use BBMParser\Model\Ilustrator as Ilustrator;
 use BBMParser\Model\Bisac as Bisac;
 use BBMParser\Model\CDD as CDD;
 use BBMParser\Model\Header as Header;
@@ -121,6 +120,8 @@ class OnixParser
             $product->setLanguageRelatedProducts($this->getRelatedProducts($xmlProduct, TRUE));
 
             $product->setProductContainedItems($this->getContainedItems($xmlProduct));
+
+            $product->setProductSets($this->getProductSets($xmlProduct));
 
             $product->setLanguages($this->getProductLanguages($xmlProduct));
 
@@ -1162,6 +1163,24 @@ class OnixParser
         return $relatedProducts;
     }
 
+    protected function getProductSets(\SimpleXMLElement $xmlProduct)
+    {
+        $productIds = [];
+
+        if (count($xmlProduct->Set)) {
+            foreach ($xmlProduct->Set as $xmlSet) {
+                foreach ($xmlSet->ProductIdentifier as $xmlProductId) {
+                    if (strval($xmlProductId->ProductIDType) != '01') {
+                        continue;
+                    }
+                    $productIds[] = strval($xmlProductId->IDValue);
+                }
+            }
+        }
+
+        return $productIds;
+    }
+
     protected function getContainedItems(\SimpleXMLElement $xmlProduct)
     {
         $productIds = [];
@@ -1174,7 +1193,6 @@ class OnixParser
                     }
                     $productIds[] = strval($xmlProductId->IDValue);
                 }
-
             }
         }
 

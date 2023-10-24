@@ -38,6 +38,7 @@ class Product
     private $relatedProducts = array();
     private $languageRelatedProducts = array();
     private $productContainedItems = array();
+    private $productSets = array();
     private $keywords = array();
     private $languages;
     private $productForm;
@@ -816,6 +817,16 @@ class Product
     public function setProductContainedItems($productContainedItems): void
     {
         $this->productContainedItems = $productContainedItems;
+    }
+
+    public function getProductSets(): array
+    {
+        return $this->productSets;
+    }
+
+    public function setProductSets(array $productSets): void
+    {
+        $this->productSets = $productSets;
     }
 
     /**
