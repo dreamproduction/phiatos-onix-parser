@@ -1,5 +1,5 @@
 {
-    "name": "bogdan-racz/phiatos-onix-parser",
+    "name": "dreamproduction/phiatos-onix-parser",
     "type": "library",
     "description": "Parser for Onix >=2.0 with extensions for Phiatos format.",
     "keywords": ["onix","parser"],
