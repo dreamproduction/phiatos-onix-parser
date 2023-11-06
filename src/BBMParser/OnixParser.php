@@ -131,6 +131,8 @@ class OnixParser
 
             $product->setTextLink($this->getTextLink($xmlProduct));
 
+            $product->setWebFeatures($this->getWebFeatures($xmlProduct));
+
             $this->onix->setProduct($product);
         }
     }
@@ -1197,5 +1199,18 @@ class OnixParser
         }
 
         return $productIds;
+    }
+
+    protected function getWebFeatures(\SimpleXMLElement $xmlProduct)
+    {
+        $webFeatures = [];
+
+        if (count($xmlProduct->WebFeature)) {
+            foreach ($xmlProduct->WebFeature as $xmlWebFeature) {
+                $webFeatures[] = strval($xmlWebFeature);
+            }
+        }
+
+        return $webFeatures;
     }
 }

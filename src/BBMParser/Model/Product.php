@@ -46,6 +46,15 @@ class Product
     private $textLink;
 
     /**
+     * Web Features are an array of strings.
+     *
+     * e.g.: ['Lern-Avatar', 'Video', 'Digitale Lernfragen']
+     *
+     * @var array $webFeatures
+     */
+    private $webFeatures = array();
+
+    /**
      * @param [type]
      */
     public function setAvailability($availability)
@@ -875,6 +884,16 @@ class Product
     public function setTextLink($textLink): void
     {
         $this->textLink = $textLink;
+    }
+
+    public function getWebFeatures(): array
+    {
+        return $this->webFeatures;
+    }
+
+    public function setWebFeatures( $webFeatures): void
+    {
+        $this->webFeatures = $webFeatures;
     }
 
 }
