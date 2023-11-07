@@ -44,7 +44,6 @@ class Product
     private $productForm;
     private $publishingStatus;
     private $textLink;
-
     /**
      * Web Features are an array of strings.
      *
@@ -53,6 +52,8 @@ class Product
      * @var array $webFeatures
      */
     private $webFeatures = array();
+    private $newDate;
+    private $onSaleDate;
 
     /**
      * @param [type]
@@ -894,6 +895,38 @@ class Product
     public function setWebFeatures( $webFeatures): void
     {
         $this->webFeatures = $webFeatures;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNewDate()
+    {
+        return $this->newDate;
+    }
+
+    /**
+     * @param string $newDate
+     */
+    public function setNewDate($newDate): void
+    {
+        $this->newDate = $newDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOnSaleDate()
+    {
+        return $this->onSaleDate;
+    }
+
+    /**
+     * @param string $onSaleDate
+     */
+    public function setOnSaleDate($onSaleDate): void
+    {
+        $this->onSaleDate = $onSaleDate;
     }
 
 }

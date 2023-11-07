@@ -133,6 +133,10 @@ class OnixParser
 
             $product->setWebFeatures($this->getWebFeatures($xmlProduct));
 
+            $product->setNewDate($this->getNewDate($xmlProduct));
+
+            $product->setOnSaleDate($this->getOnSaleDate($xmlProduct));
+
             $this->onix->setProduct($product);
         }
     }
@@ -1212,5 +1216,31 @@ class OnixParser
         }
 
         return $webFeatures;
+    }
+
+    protected function getNewDate(\SimpleXMLElement $xmlProduct)
+    {
+        $newDate = '';
+
+        if (count($xmlProduct->WebNeu)) {
+            if (strval($xmlProduct->WebNeu)) {
+                $newDate = strval($xmlProduct->WebNeu);
+            }
+        }
+
+        return $newDate;
+    }
+
+    protected function getOnSaleDate(\SimpleXMLElement $xmlProduct)
+    {
+        $onSaleDate = '';
+
+        if (count($xmlProduct->WebAktion)) {
+            if (strval($xmlProduct->WebAktion)) {
+                $onSaleDate = strval($xmlProduct->WebAktion);
+            }
+        }
+
+        return $onSaleDate;
     }
 }
