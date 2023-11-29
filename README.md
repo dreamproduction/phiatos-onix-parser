@@ -5,7 +5,7 @@ PHP Library to convert XML Onix into PHP Objects.
 # Requirements
 
 - XML Onix 2.0 >
-- PHP 7.1 >
+- PHP 8.1 >
 
 # Install
 

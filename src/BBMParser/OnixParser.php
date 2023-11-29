@@ -137,6 +137,8 @@ class OnixParser
 
             $product->setOnSaleDate($this->getOnSaleDate($xmlProduct));
 
+            $product->setSoonDate($this->getSoonDate($xmlProduct));
+
             $this->onix->setProduct($product);
         }
     }
@@ -1242,5 +1244,18 @@ class OnixParser
         }
 
         return $onSaleDate;
+    }
+
+    private function getSoonDate(\SimpleXMLElement $xmlProduct)
+    {
+        $soonDate = '';
+
+        if (count($xmlProduct->WebDemnaechst)) {
+            if (strval($xmlProduct->WebDemnaechst)) {
+                $soonDate = strval($xmlProduct->WebDemnaechst);
+            }
+        }
+
+        return $soonDate;
     }
 }

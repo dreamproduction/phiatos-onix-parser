@@ -2,8 +2,7 @@
 
 namespace BBMParser\Model;
 
-class Product
-{
+class Product {
     private $availability;
     private $id;
     private $isbn;
@@ -54,12 +53,12 @@ class Product
     private $webFeatures = array();
     private $newDate;
     private $onSaleDate;
+    private $soonDate;
 
     /**
      * @param [type]
      */
-    public function setAvailability($availability)
-    {
+    public function setAvailability($availability) {
         $this->availability = $availability;
     }
 
@@ -68,16 +67,14 @@ class Product
      *
      * @return mixed
      */
-    public function isAvailable()
-    {
+    public function isAvailable() {
         return $this->availability;
     }
 
     /**
      * @param [type]
      */
-    public function setOperationType($operationType)
-    {
+    public function setOperationType($operationType) {
         $this->operationType = $operationType;
     }
 
@@ -86,8 +83,7 @@ class Product
      *
      * @return mixed
      */
-    public function getOperationType()
-    {
+    public function getOperationType() {
         return $this->operationType;
     }
 
@@ -96,8 +92,7 @@ class Product
      *
      * @return mixed
      */
-    public function getISBN()
-    {
+    public function getISBN() {
         return $this->isbn;
     }
 
@@ -108,8 +103,7 @@ class Product
      *
      * @return self
      */
-    public function setISBN($isbn)
-    {
+    public function setISBN($isbn) {
         $this->isbn = $isbn;
     }
 
@@ -118,8 +112,7 @@ class Product
      *
      * @return mixed
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -130,8 +123,7 @@ class Product
      *
      * @return self
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
     }
 
@@ -140,8 +132,7 @@ class Product
      *
      * @return mixed
      */
-    public function getFormatType()
-    {
+    public function getFormatType() {
         return $this->formatType;
     }
 
@@ -152,8 +143,7 @@ class Product
      *
      * @return self
      */
-    public function setFormatType($formatType)
-    {
+    public function setFormatType($formatType) {
         $this->formatType = $formatType;
     }
 
@@ -162,8 +152,7 @@ class Product
      *
      * @return mixed
      */
-    public function getProtectionType()
-    {
+    public function getProtectionType() {
         return $this->protectionType;
     }
 
@@ -174,8 +163,7 @@ class Product
      *
      * @return self
      */
-    public function setProtectionType($protectionType)
-    {
+    public function setProtectionType($protectionType) {
         $this->protectionType = $protectionType;
     }
 
@@ -184,8 +172,7 @@ class Product
      *
      * @return mixed
      */
-    public function getCollectionTitle()
-    {
+    public function getCollectionTitle() {
         return $this->collectionTitle;
     }
 
@@ -196,8 +183,7 @@ class Product
      *
      * @return self
      */
-    public function setCollectionTitle($collectionTitle)
-    {
+    public function setCollectionTitle($collectionTitle) {
         $this->collectionTitle = $collectionTitle;
     }
 
@@ -206,8 +192,7 @@ class Product
      *
      * @return mixed
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -218,8 +203,7 @@ class Product
      *
      * @return self
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
     }
 
@@ -228,8 +212,7 @@ class Product
      *
      * @return mixed
      */
-    public function getSubTitle()
-    {
+    public function getSubTitle() {
         return $this->subTitle;
     }
 
@@ -240,8 +223,7 @@ class Product
      *
      * @return self
      */
-    public function setSubTitle($subTitle)
-    {
+    public function setSubTitle($subTitle) {
         $this->subTitle = $subTitle;
     }
 
@@ -250,8 +232,7 @@ class Product
      *
      * @return mixed
      */
-    public function getContributors()
-    {
+    public function getContributors() {
         return $this->contributors;
     }
 
@@ -260,15 +241,13 @@ class Product
      *
      * @return mixed
      */
-    public function getContributorsByType($type)
-    {
+    public function getContributorsByType($type) {
         $contributors = array();
 
-        foreach ($this->contributors as $contributor)
-        {
+        foreach ($this->contributors as $contributor) {
             $reflection = new \ReflectionClass($contributor);
 
-            if($reflection->getShortName() == ucfirst($type))
+            if ($reflection->getShortName() == ucfirst($type))
                 $contributors[] = $contributor;
         }
 
@@ -282,8 +261,7 @@ class Product
      *
      * @return self
      */
-    public function setContributors(Array $contributors)
-    {
+    public function setContributors(array $contributors) {
         $this->contributors = $contributors;
     }
 
@@ -292,8 +270,7 @@ class Product
      *
      * @return mixed
      */
-    public function getEditionNumber()
-    {
+    public function getEditionNumber() {
         return $this->editionNumber;
     }
 
@@ -304,24 +281,21 @@ class Product
      *
      * @return self
      */
-    public function setEditionNumber($editionNumber)
-    {
+    public function setEditionNumber($editionNumber) {
         $this->editionNumber = $editionNumber;
     }
 
     /**
      * @return mixed
      */
-    public function getEditionStatement()
-    {
+    public function getEditionStatement() {
         return $this->editionStatement;
     }
 
     /**
      * @param mixed $editionStatement
      */
-    public function setEditionStatement($editionStatement): void
-    {
+    public function setEditionStatement($editionStatement): void {
         $this->editionStatement = $editionStatement;
     }
 
@@ -330,8 +304,7 @@ class Product
      *
      * @return mixed
      */
-    public function getIdiom()
-    {
+    public function getIdiom() {
         return $this->idiom;
     }
 
@@ -342,8 +315,7 @@ class Product
      *
      * @return self
      */
-    public function setIdiom($idiomCode)
-    {
+    public function setIdiom($idiomCode) {
         $this->idiom = $idiomCode;
     }
 
@@ -352,8 +324,7 @@ class Product
      *
      * @return mixed
      */
-    public function getPageNumbers()
-    {
+    public function getPageNumbers() {
         return $this->pageNumbers;
     }
 
@@ -364,8 +335,7 @@ class Product
      *
      * @return self
      */
-    public function setPageNumbers($pageNumbers)
-    {
+    public function setPageNumbers($pageNumbers) {
         $this->pageNumbers = $pageNumbers;
     }
 
@@ -374,8 +344,7 @@ class Product
      *
      * @return mixed
      */
-    public function getSize()
-    {
+    public function getSize() {
         return $this->size;
     }
 
@@ -386,8 +355,7 @@ class Product
      *
      * @return self
      */
-    public function setSize($size)
-    {
+    public function setSize($size) {
         $this->size = $size;
     }
 
@@ -396,8 +364,7 @@ class Product
      *
      * @return mixed
      */
-    public function getSizeUnit()
-    {
+    public function getSizeUnit() {
         return $this->sizeUnit;
     }
 
@@ -408,8 +375,7 @@ class Product
      *
      * @return self
      */
-    public function setSizeUnit($sizeUnit)
-    {
+    public function setSizeUnit($sizeUnit) {
         $this->sizeUnit = $sizeUnit;
     }
 
@@ -418,20 +384,17 @@ class Product
      *
      * @return mixed
      */
-    public function getCategories()
-    {
+    public function getCategories() {
         return $this->categories;
     }
 
-    public function getCategoriesByType($type)
-    {
+    public function getCategoriesByType($type) {
         $categories = array();
 
-        foreach ($this->categories as $category)
-        {
+        foreach ($this->categories as $category) {
             $reflection = new \ReflectionClass($category);
 
-            if($reflection->getShortName() == ucfirst($type))
+            if ($reflection->getShortName() == ucfirst($type))
                 $categories[] = $category;
         }
 
@@ -446,8 +409,7 @@ class Product
      *
      * @return self
      */
-    public function setCategories(Array $categories)
-    {
+    public function setCategories(array $categories) {
         $this->categories = $categories;
     }
 
@@ -456,8 +418,7 @@ class Product
      *
      * @return mixed
      */
-    public function getTags()
-    {
+    public function getTags() {
         return $this->tags;
     }
 
@@ -468,8 +429,7 @@ class Product
      *
      * @return self
      */
-    public function setTags($tags)
-    {
+    public function setTags($tags) {
         $this->tags = $tags;
     }
 
@@ -478,8 +438,7 @@ class Product
      *
      * @return mixed
      */
-    public function getAgeRatingPrecision()
-    {
+    public function getAgeRatingPrecision() {
         return $this->ageRatingPrecision;
     }
 
@@ -490,8 +449,7 @@ class Product
      *
      * @return self
      */
-    public function setAgeRatingPrecision($ageRatingPrecision)
-    {
+    public function setAgeRatingPrecision($ageRatingPrecision) {
         $this->ageRatingPrecision = $ageRatingPrecision;
     }
 
@@ -500,8 +458,7 @@ class Product
      *
      * @return mixed
      */
-    public function getAgeRatingValue()
-    {
+    public function getAgeRatingValue() {
         return $this->ageRatingValue;
     }
 
@@ -512,8 +469,7 @@ class Product
      *
      * @return self
      */
-    public function setAgeRatingValue($ageRatingValue)
-    {
+    public function setAgeRatingValue($ageRatingValue) {
         $this->ageRatingValue = $ageRatingValue;
     }
 
@@ -522,8 +478,7 @@ class Product
      *
      * @return mixed
      */
-    public function getSynopsis()
-    {
+    public function getSynopsis() {
         return $this->synopsis;
     }
 
@@ -534,8 +489,7 @@ class Product
      *
      * @return self
      */
-    public function setSynopsis($synopsis)
-    {
+    public function setSynopsis($synopsis) {
         $this->synopsis = $synopsis;
     }
 
@@ -544,8 +498,7 @@ class Product
      *
      * @return mixed
      */
-    public function getFormatFile()
-    {
+    public function getFormatFile() {
         return $this->formatFile;
     }
 
@@ -556,8 +509,7 @@ class Product
      *
      * @return self
      */
-    public function setFormatFile($formatFile)
-    {
+    public function setFormatFile($formatFile) {
         $this->formatFile = $formatFile;
     }
 
@@ -566,8 +518,7 @@ class Product
      *
      * @return mixed
      */
-    public function getUrlFile()
-    {
+    public function getUrlFile() {
         return $this->urlFile;
     }
 
@@ -578,8 +529,7 @@ class Product
      *
      * @return self
      */
-    public function setUrlFile($urlFile)
-    {
+    public function setUrlFile($urlFile) {
         $this->urlFile = $urlFile;
     }
 
@@ -588,8 +538,7 @@ class Product
      *
      * @return mixed
      */
-    public function getPrices()
-    {
+    public function getPrices() {
         return $this->prices;
     }
 
@@ -600,8 +549,7 @@ class Product
      *
      * @return self
      */
-    public function setPrices(Array $prices)
-    {
+    public function setPrices(array $prices) {
         $this->prices = $prices;
     }
 
@@ -610,8 +558,7 @@ class Product
      *
      * @return mixed
      */
-    public function getIncludedTerritoriality()
-    {
+    public function getIncludedTerritoriality() {
         return $this->includedTerritoriality;
     }
 
@@ -622,8 +569,7 @@ class Product
      *
      * @return self
      */
-    public function setIncludedTerritoriality($includedTerritoriality)
-    {
+    public function setIncludedTerritoriality($includedTerritoriality) {
         $this->includedTerritoriality = $includedTerritoriality;
     }
 
@@ -632,8 +578,7 @@ class Product
      *
      * @return mixed
      */
-    public function getImprintName()
-    {
+    public function getImprintName() {
         return $this->imprintName;
     }
 
@@ -644,72 +589,63 @@ class Product
      *
      * @return self
      */
-    public function setImprintName($imprintName)
-    {
+    public function setImprintName($imprintName) {
         $this->imprintName = $imprintName;
     }
 
     /**
      * @return mixed
      */
-    public function getMediaUrls()
-    {
+    public function getMediaUrls() {
         return $this->mediaUrls;
     }
 
     /**
      * @param mixed $mediaUrl
      */
-    public function setMediaUrls($mediaUrls)
-    {
+    public function setMediaUrls($mediaUrls) {
         $this->mediaUrls = $mediaUrls;
     }
 
     /**
      * @return mixed
      */
-    public function getWebshopCategories()
-    {
+    public function getWebshopCategories() {
         return $this->webshopCategories;
     }
 
     /**
      * @param mixed $webshopCategories
      */
-    public function setWebshopCategories($webshopCategories): void
-    {
+    public function setWebshopCategories($webshopCategories): void {
         $this->webshopCategories = $webshopCategories;
     }
 
     /**
      * @return mixed
      */
-    public function getSupplierName()
-    {
+    public function getSupplierName() {
         return $this->supplierName;
     }
 
     /**
      * @param mixed $supplierName
      */
-    public function setSupplierName($supplierName): void
-    {
+    public function setSupplierName($supplierName): void {
         $this->supplierName = $supplierName;
     }
 
     /**
      * @return mixed
      */
-    public function getMeasures()
-    {
+    public function getMeasures() {
         return $this->measures;
     }
 
     /**
      * @param mixed $measures
      */
-    public function setMeasures($measures): void
-    {
+    public function setMeasures($measures): void {
         $this->measures = $measures;
     }
 
@@ -718,15 +654,13 @@ class Product
      *
      * @return mixed
      */
-    public function getMeasureByType($type)
-    {
+    public function getMeasureByType($type) {
         $measures = array();
 
-        foreach ($this->measures as $measure)
-        {
+        foreach ($this->measures as $measure) {
             $reflection = new \ReflectionClass($measure);
 
-            if($reflection->getShortName() == ucfirst($type))
+            if ($reflection->getShortName() == ucfirst($type))
                 $measures[] = $measure;
         }
 
@@ -736,197 +670,185 @@ class Product
     /**
      * @return mixed
      */
-    public function getProductUpdateUrl()
-    {
+    public function getProductUpdateUrl() {
         return $this->productUpdateUrl;
     }
 
     /**
      * @param mixed $productUpdateUrl
      */
-    public function setProductUpdateUrl($productUpdateUrl): void
-    {
+    public function setProductUpdateUrl($productUpdateUrl): void {
         $this->productUpdateUrl = $productUpdateUrl;
     }
 
     /**
      * @return mixed
      */
-    public function getRelatedProducts()
-    {
+    public function getRelatedProducts() {
         return $this->relatedProducts;
     }
 
     /**
      * @param mixed $relatedProducts
      */
-    public function setRelatedProducts($relatedProducts): void
-    {
+    public function setRelatedProducts($relatedProducts): void {
         $this->relatedProducts = $relatedProducts;
     }
 
     /**
      * @return array
      */
-    public function getLanguageRelatedProducts()
-    {
+    public function getLanguageRelatedProducts() {
         return $this->languageRelatedProducts;
     }
 
     /**
      * @param mixed $languageRelatedProducts
      */
-    public function setLanguageRelatedProducts($languageRelatedProducts): void
-    {
+    public function setLanguageRelatedProducts($languageRelatedProducts): void {
         $this->languageRelatedProducts = $languageRelatedProducts;
     }
 
     /**
      * @return mixed
      */
-    public function getLanguages()
-    {
+    public function getLanguages() {
         return $this->languages;
     }
 
     /**
      * @param mixed $languages
      */
-    public function setLanguages($languages): void
-    {
+    public function setLanguages($languages): void {
         $this->languages = $languages;
     }
 
     /**
      * @return mixed
      */
-    public function getProductForm()
-    {
+    public function getProductForm() {
         return $this->productForm;
     }
 
     /**
      * @param mixed $productForm
      */
-    public function setProductForm($productForm): void
-    {
+    public function setProductForm($productForm): void {
         $this->productForm = $productForm;
     }
 
     /**
      * @return mixed
      */
-    public function getProductContainedItems()
-    {
+    public function getProductContainedItems() {
         return $this->productContainedItems;
     }
 
     /**
      * @param mixed $productContainedItems
      */
-    public function setProductContainedItems($productContainedItems): void
-    {
+    public function setProductContainedItems($productContainedItems): void {
         $this->productContainedItems = $productContainedItems;
     }
 
-    public function getProductSets(): array
-    {
+    public function getProductSets(): array {
         return $this->productSets;
     }
 
-    public function setProductSets(array $productSets): void
-    {
+    public function setProductSets(array $productSets): void {
         $this->productSets = $productSets;
     }
 
     /**
      * @return mixed
      */
-    public function getKeywords()
-    {
+    public function getKeywords() {
         return $this->keywords;
     }
 
     /**
      * @param mixed $keywords
      */
-    public function setKeywords($keywords): void
-    {
+    public function setKeywords($keywords): void {
         $this->keywords = $keywords;
     }
 
     /**
      * @return mixed
      */
-    public function getPublishingStatus()
-    {
+    public function getPublishingStatus() {
         return $this->publishingStatus;
     }
 
     /**
      * @param mixed $publishingStatus
      */
-    public function setPublishingStatus($publishingStatus): void
-    {
+    public function setPublishingStatus($publishingStatus): void {
         $this->publishingStatus = $publishingStatus;
     }
 
     /**
      * @return mixed
      */
-    public function getTextLink()
-    {
+    public function getTextLink() {
         return $this->textLink;
     }
 
     /**
      * @param mixed $textLink
      */
-    public function setTextLink($textLink): void
-    {
+    public function setTextLink($textLink): void {
         $this->textLink = $textLink;
     }
 
-    public function getWebFeatures(): array
-    {
+    public function getWebFeatures(): array {
         return $this->webFeatures;
     }
 
-    public function setWebFeatures( $webFeatures): void
-    {
+    public function setWebFeatures($webFeatures): void {
         $this->webFeatures = $webFeatures;
     }
 
     /**
      * @return string
      */
-    public function getNewDate()
-    {
+    public function getNewDate() {
         return $this->newDate;
     }
 
     /**
      * @param string $newDate
      */
-    public function setNewDate($newDate): void
-    {
+    public function setNewDate($newDate): void {
         $this->newDate = $newDate;
     }
 
     /**
      * @return string
      */
-    public function getOnSaleDate()
-    {
+    public function getOnSaleDate() {
         return $this->onSaleDate;
     }
 
     /**
      * @param string $onSaleDate
      */
-    public function setOnSaleDate($onSaleDate): void
-    {
+    public function setOnSaleDate($onSaleDate): void {
         $this->onSaleDate = $onSaleDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSoonDate() {
+        return $this->soonDate;
+    }
+
+    /**
+     * @param mixed $soonDate
+     */
+    public function setSoonDate($soonDate): void {
+        $this->soonDate = $soonDate;
     }
 
 }
