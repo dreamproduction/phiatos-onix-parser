@@ -54,6 +54,7 @@ class Product {
     private $newDate;
     private $onSaleDate;
     private $soonDate;
+    private $isSet;
 
     /**
      * @param [type]
@@ -849,6 +850,20 @@ class Product {
      */
     public function setSoonDate($soonDate): void {
         $this->soonDate = $soonDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsSet() {
+        return $this->isSet;
+    }
+
+    /**
+     * @param mixed $isSet
+     */
+    public function setIsSet($isSet): void {
+        $this->isSet = $isSet;
     }
 
 }
