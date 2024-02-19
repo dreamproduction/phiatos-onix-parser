@@ -54,6 +54,7 @@ class Product {
     private $newDate;
     private $onSaleDate;
     private $soonDate;
+    private $willBeReplacedDate;
     private $isSet;
 
     /**
@@ -850,6 +851,22 @@ class Product {
      */
     public function setSoonDate($soonDate): void {
         $this->soonDate = $soonDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWillBeReplacedDate()
+    {
+        return $this->willBeReplacedDate;
+    }
+
+    /**
+     * @param mixed $willBeReplacedDate
+     */
+    public function setWillBeReplacedDate($willBeReplacedDate): void
+    {
+        $this->willBeReplacedDate = $willBeReplacedDate;
     }
 
     /**

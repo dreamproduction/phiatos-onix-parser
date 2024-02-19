@@ -136,6 +136,8 @@ class OnixParser {
 
             $product->setSoonDate($this->getSoonDate($xmlProduct));
 
+            $product->setWillBeReplacedDate($this->getWillBeReplacedDate($xmlProduct));
+
             $product->setIsSet($this->getIsSet($xmlProduct));
 
             $this->onix->setProduct($product);
@@ -1159,6 +1161,19 @@ class OnixParser {
         }
 
         return $onSaleDate;
+    }
+
+    protected function getWillBeReplacedDate(\SimpleXMLElement $xmlProduct)
+    {
+        $willBeReplacedDate = '';
+
+        if (count($xmlProduct->WebWirdAbgeloest)) {
+            if (strval($xmlProduct->WebWirdAbgeloest)) {
+                $willBeReplacedDate = strval($xmlProduct->WebWirdAbgeloest);
+            }
+        }
+
+        return $willBeReplacedDate;
     }
 
     private function getSoonDate(\SimpleXMLElement $xmlProduct)
