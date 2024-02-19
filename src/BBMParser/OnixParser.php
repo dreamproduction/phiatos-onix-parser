@@ -1194,7 +1194,7 @@ class OnixParser {
         $isSet = FALSE;
 
         if (count($xmlProduct->CareumSet)) {
-            if (strval($xmlProduct->CareumSet)) {
+            if (strval($xmlProduct->CareumSet) === 'true') {
                 $isSet = TRUE;
             }
         }
