@@ -43,6 +43,8 @@ class Product {
     private $productForm;
     private $publishingStatus;
     private $textLink;
+    private $relatedProductsReplaced = array();
+
     /**
      * Web Features are an array of strings.
      *
@@ -695,6 +697,16 @@ class Product {
      */
     public function setRelatedProducts($relatedProducts): void {
         $this->relatedProducts = $relatedProducts;
+    }
+
+    public function getRelatedProductsReplaced(): array
+    {
+        return $this->relatedProductsReplaced;
+    }
+
+    public function setRelatedProductsReplaced(array $relatedProductsReplaced): void
+    {
+        $this->relatedProductsReplaced = $relatedProductsReplaced;
     }
 
     /**

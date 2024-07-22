@@ -114,6 +114,8 @@ class OnixParser {
 
             $product->setRelatedProducts($this->getRelatedProducts($xmlProduct));
 
+            $product->setRelatedProductsReplaced($this->getRelatedProductsReplaced($xmlProduct));
+
             $product->setLanguageRelatedProducts($this->getRelatedProducts($xmlProduct, TRUE));
 
             $product->setProductContainedItems($this->getContainedItems($xmlProduct));
@@ -1079,6 +1081,26 @@ class OnixParser {
                     if (strval($xmlRelatedProductId->ProductIDType) != '01') {
                         continue;
                     }
+                    $relatedProducts[] = strval($xmlRelatedProductId->IDValue);
+                }
+
+            }
+        }
+
+        return $relatedProducts;
+    }
+
+    protected function getRelatedProductsReplaced(\SimpleXMLElement $xmlProduct, $languageRelated = FALSE)
+    {
+        $relatedProducts = [];
+
+        if (count($xmlProduct->RelatedProduct)) {
+            foreach ($xmlProduct->RelatedProduct as $xmlRelatedProductIds) {
+                $relationCode = strval($xmlRelatedProductIds->RelationCode);
+                if ($relationCode != '05') {
+                    continue;
+                }
+                foreach ($xmlRelatedProductIds->ProductIdentifier as $xmlRelatedProductId) {
                     $relatedProducts[] = strval($xmlRelatedProductId->IDValue);
                 }
 
