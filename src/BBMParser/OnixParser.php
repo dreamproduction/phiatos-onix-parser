@@ -1071,7 +1071,7 @@ class OnixParser {
         if (count($xmlProduct->RelatedProduct)) {
             foreach ($xmlProduct->RelatedProduct as $xmlRelatedProductIds) {
                 $relationCode = strval($xmlRelatedProductIds->RelationCode);
-                if (empty($languageRelated) && $relationCode =!'07') {
+                if (empty($languageRelated) && $relationCode == '11') {
                     continue;
                 }
                 if ($languageRelated && $relationCode == '07') {
